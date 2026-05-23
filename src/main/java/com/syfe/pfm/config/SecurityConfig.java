@@ -43,6 +43,7 @@ public class SecurityConfig {
             
             // Route permissions
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/api", "/api/").permitAll()
                 .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
