@@ -30,6 +30,10 @@ public class ReportController {
             @PathVariable int month,
             @AuthenticationPrincipal UserPrincipal principal) {
         
+        if (month < 1 || month > 12) {
+            throw new com.syfe.pfm.exception.BadRequestException("Month must be between 1 and 12");
+        }
+        
         MonthlyReportResponse report = reportService.getMonthlyReport(principal.getId(), year, month);
         return ResponseEntity.ok(report);
     }

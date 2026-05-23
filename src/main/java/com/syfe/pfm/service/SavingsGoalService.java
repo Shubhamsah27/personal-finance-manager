@@ -113,13 +113,17 @@ public class SavingsGoalService {
 
     public BigDecimal calculateProgressPercentage(SavingsGoal goal, BigDecimal currentProgress) {
         if (goal.getTargetAmount().compareTo(BigDecimal.ZERO) == 0) {
-            return BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
+            return BigDecimal.ZERO.setScale(1, RoundingMode.HALF_UP);
         }
         
-        // Return (currentProgress / targetAmount) * 100 rounded to 2 decimal places
         BigDecimal percentage = currentProgress
                 .multiply(BigDecimal.valueOf(100))
-                .divide(goal.getTargetAmount(), 2, RoundingMode.HALF_UP);
+                .divide(goal.getTargetAmount(), 2, RoundingMode.HALF_UP)
+                .stripTrailingZeros();
+        
+        if (percentage.scale() < 1) {
+            percentage = percentage.setScale(1, RoundingMode.HALF_UP);
+        }
         
         return percentage;
     }

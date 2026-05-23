@@ -42,6 +42,10 @@ public class CategoryResponse {
         return isCustom;
     }
 
+    public boolean getCustom() {
+        return isCustom;
+    }
+
     public void setIsCustom(boolean custom) {
         isCustom = custom;
     }
