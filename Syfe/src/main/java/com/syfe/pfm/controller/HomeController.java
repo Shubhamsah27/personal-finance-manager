@@ -11,7 +11,7 @@ import java.util.Map;
 @RestController
 public class HomeController {
 
-    @GetMapping({"/", "/api", "/api/"})
+    @GetMapping({"/api", "/api/"})
     public Map<String, Object> home() {
         Map<String, Object> response = new HashMap<>();
         response.put("name", "Personal Finance Manager API");

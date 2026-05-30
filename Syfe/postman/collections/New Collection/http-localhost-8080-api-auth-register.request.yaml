@@ -1,0 +1,18 @@
+$kind: http-request
+name: http://localhost:8080/api/auth/register
+url: http://localhost:8080/api/auth/register
+method: GET
+body:
+  type: json
+  content: "{\r
+
+    \  \"username\": \"manual1@example.com\",\r
+
+    \  \"password\": \"123456\",\r
+
+    \  \"fullName\": \"Manual Test\",\r
+
+    \  \"phoneNumber\": \"9999999999\"\r
+
+    }"
+order: 1779540577113
